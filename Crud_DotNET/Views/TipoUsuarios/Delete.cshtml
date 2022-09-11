@@ -1,0 +1,26 @@
+﻿@model Crud_DotNET.Models.TipoUsuario
+
+@{
+    ViewData["Title"] = "Deletar Departamento";
+}
+
+<h1>Deletar Departamento</h1>
+
+<h3>Deseja realmente apagar o Departamento?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <label>Departamento</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+</div>

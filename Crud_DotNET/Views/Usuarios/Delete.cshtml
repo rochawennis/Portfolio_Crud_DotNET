@@ -1,0 +1,42 @@
+﻿@model Crud_DotNET.Models.Usuario
+
+
+@{
+    ViewData["Title"] = "Deletar Funcionário";
+}
+
+<h1>Deletar Funcionário</h1>
+
+<h3>Deseja realmente apagar o funcionário?</h3>
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Delete">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="NomeUsuario" class="control-label">Nome do Usuário</label>
+                    <input disabled asp-for="NomeUsuario" class="form-control" />
+                    <span asp-validation-for="NomeUsuario" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Idade" class="control-label"></label>
+                    <input disabled asp-for="Idade" class="form-control" />
+                    <span asp-validation-for="Idade" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tipo" class="control-label">Departamento</label>
+                    <Select disabled asp-for="Tipo" class="form-control" asp-items=@ViewBag.TiposUsuario></Select>
+                    <span asp-validation-for="Tipo" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Apagar" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

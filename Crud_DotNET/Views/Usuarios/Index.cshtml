@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Crud_DotNET.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Cadastro de Funcionário <a asp-action="Create" class="btn btn-success">Criar Novo</a></h2>
+
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label class="control-label">Nome</label>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idade)
+            </th>
+            <th>
+                <label class="control-label">Departamento</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoDescricao)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Editar</a>
+                    <a asp-action="Details" class="btn btn-secondary" asp-route-id="@item.Id">Detalhes</a> 
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Apagar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
