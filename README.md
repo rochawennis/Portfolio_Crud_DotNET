@@ -24,15 +24,21 @@
 <img src="https://user-images.githubusercontent.com/47645762/189551088-ba545a84-9664-47bc-aec4-f0d094eae674.png" width="100%"></img>
 
 <h1 align="center">Cadastrar Departamento</h1>
-<img src="" width="100%"></img>
+<img src="https://user-images.githubusercontent.com/47645762/189551399-8714d26b-3422-481b-b34c-940bef46e8fb.png" width="100%"></img>
 
 <h1 align="center">Editar Departamento</h1>
-<img src="" width="100%"></img>
+<img src="https://user-images.githubusercontent.com/47645762/189551413-7164299b-007d-4186-9dd5-9e34104e0d8f.png" width="100%"></img>
 
 <h1 align="center">Detalhes do Departamento</h1>
-<img src="" width="100%"></img>
+<img src="https://user-images.githubusercontent.com/47645762/189551426-411a47ce-7b1a-4d25-84c1-8011f4512b49.png" width="100%"></img>
 
 <h1 align="center">Deletar Departamento</h1>
-<img src="" width="100%"></img>
+<img src="https://user-images.githubusercontent.com/47645762/189551436-fbc62ecf-98c4-493b-9e7f-7b44ec6a549d.png" width="100%"></img>
+
+<h1 align="center">Se houver funcionários vinculados, será exibida a mensagem</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189551452-48e8387d-7811-4d4f-a324-f91a7eb91277.png" width="100%"></img>
+
+<h1 align="center">Se NÃO houver funcionários vinculados, será exibido a mensagem</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189551481-64b76c42-71bc-427c-95db-aa6c35acac9d.png" width="100%"></img>
 
 </p>
