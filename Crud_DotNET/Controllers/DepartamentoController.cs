@@ -1,44 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Crud_DotNET.Models;
+﻿using Crud_DotNET.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Crud_DotNET.Controllers
 {
-    public class TipoUsuariosController : Controller
+    public class DepartamentoController : Controller
     {
         private readonly Contexto _context;
 
-        public TipoUsuariosController(Contexto context)
+        public DepartamentoController(Contexto context)
         {
             _context = context;
         }
 
 
-
-
         // GET: TipoUsuarios
         public async Task<IActionResult> Index()
         {
-            return _context.TipoUsuario != null ?
-                        View(await _context.TipoUsuario.ToListAsync()) :
+            return _context.Departamento != null ?
+                        View(await _context.Departamento.ToListAsync()) :
                         Problem("Entity set 'Contexto.TipoUsuario'  is null.");
+
         }
 
         // GET: TipoUsuarios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.TipoUsuario == null)
+            if (id == null || _context.Departamento == null)
             {
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario
-                .FirstOrDefaultAsync(m => m.id == id);
+            var tipoUsuario = await _context.Departamento
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tipoUsuario == null)
             {
                 return NotFound();
@@ -58,26 +52,27 @@ namespace Crud_DotNET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Tipo")] TipoUsuario tipoUsuario)
+        public async Task<IActionResult> Create([Bind("id,Tipo")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tipoUsuario);
+                _context.Add(departamento);
                 await _context.SaveChangesAsync();
+                TempData["Mensagem"] = "Departamento criado com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(tipoUsuario);
+            return View(departamento);
         }
 
         // GET: TipoUsuarios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.TipoUsuario == null)
+            if (id == null || _context.Departamento == null)
             {
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
+            var tipoUsuario = await _context.Departamento.FindAsync(id);
             if (tipoUsuario == null)
             {
                 return NotFound();
@@ -90,24 +85,25 @@ namespace Crud_DotNET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Tipo")] TipoUsuario tipoUsuario)
+        public async Task<IActionResult> Edit(int Id, [Bind("Id,Tipo")] Departamento departamento)
         {
 
-            if (id != tipoUsuario.id)
+            if (Id != departamento.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+
                 try
                 {
-                    _context.Update(tipoUsuario);
+                    _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipoUsuarioExists(tipoUsuario.id))
+                    if (!TipoUsuarioExists(departamento.Id))
                     {
                         return NotFound();
                     }
@@ -116,21 +112,22 @@ namespace Crud_DotNET.Controllers
                         throw;
                     }
                 }
+                TempData["Mensagem"] = "Alteração gravada com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(tipoUsuario);
+            return View(departamento);
         }
 
         // GET: TipoUsuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.TipoUsuario == null)
+            if (id == null || _context.Departamento == null)
             {
                 return NotFound();
             }
 
-            var tipoUsuario = await _context.TipoUsuario
-                .FirstOrDefaultAsync(m => m.id == id);
+            var tipoUsuario = await _context.Departamento
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tipoUsuario == null)
             {
                 return NotFound();
@@ -144,24 +141,50 @@ namespace Crud_DotNET.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.TipoUsuario == null)
+            if (_context.Departamento == null)
             {
                 return Problem("Entity set 'Contexto.TipoUsuario'  is null.");
             }
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
+            var tipoUsuario = await _context.Departamento.FindAsync(id);
 
-            if (tipoUsuario != null )
+            var lista = CarregaDados(id).Count;
+
+            if (tipoUsuario != null && lista == 0)
             {
-                _context.TipoUsuario.Remove(tipoUsuario);
+                _context.Departamento.Remove(tipoUsuario);
+                await _context.SaveChangesAsync();
+                TempData["Mensagem"] = "Departamento excluído com sucesso!";
+                return RedirectToAction(nameof(Index));
             }
-
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            TempData["Mensagem"] = "Departamento com funcionários vinculados!";
+            return RedirectToAction(nameof(Delete));
+
         }
 
         private bool TipoUsuarioExists(int id)
         {
-            return (_context.TipoUsuario?.Any(e => e.id == id)).GetValueOrDefault();
+            return (_context.Departamento?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        public List<Usuario> CarregaDados(int id)
+
+        {
+
+            var lista = (from u in _context.Usuario
+                         join t in _context.Departamento on u.Tipo equals t.Id
+                         where t.Id == id
+                         select new Usuario
+                         {
+                             Id = u.Id,
+                             Idade = u.Idade,
+                             Tipo = u.Tipo,
+                             NomeUsuario = u.NomeUsuario,
+                             TipoDescricao = t.Tipo
+                         }).ToList();
+
+            return lista;
+
+        }
+
     }
 }

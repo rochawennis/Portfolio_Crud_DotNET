@@ -23,17 +23,19 @@ namespace Crud_DotNET.Migrations
 
             modelBuilder.Entity("Crud_DotNET.Models.TipoUsuario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Tipo");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("TipoUsuario");
                 });
@@ -42,19 +44,22 @@ namespace Crud_DotNET.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("Idade")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Idade");
 
                     b.Property<string>("NomeUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Tipo")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Tipo");
 
                     b.HasKey("Id");
 

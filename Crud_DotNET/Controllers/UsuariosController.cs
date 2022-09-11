@@ -28,7 +28,7 @@ namespace Crud_DotNET.Controllers
             //var lista = _contexto.Usuario.ToList();
 
             var lista = (from u in _contexto.Usuario
-                         join t in _contexto.TipoUsuario on u.Tipo equals t.id
+                         join t in _contexto.Departamento on u.Tipo equals t.Id
                          select new Usuario
                          {
                              Id = u.Id,
@@ -52,9 +52,9 @@ namespace Crud_DotNET.Controllers
         [HttpPost]
         public IActionResult Create(Usuario usuario)
         {
-
             _contexto.Usuario.Add(usuario);
             _contexto.SaveChanges();
+            TempData["Mensagem"] = "Funcionário criado com sucesso!";
             return RedirectToAction("Index");
 
         }
@@ -73,6 +73,7 @@ namespace Crud_DotNET.Controllers
         {
             _contexto.Usuario.Update(usuario);
             _contexto.SaveChanges();
+            TempData["Mensagem"] = "Alteração gravada com sucesso!";
             return RedirectToAction("Index");
         }
 
@@ -94,7 +95,7 @@ namespace Crud_DotNET.Controllers
             {
                 _contexto.Usuario.Remove(usuario);
                 _contexto.SaveChanges();
-
+                TempData["Mensagem"] = "Funcionário excluído com sucesso!";
                 return RedirectToAction("Index");
             }
             return View(usuario);
@@ -117,11 +118,11 @@ namespace Crud_DotNET.Controllers
 
             //var tipoUsuario = _contexto.TipoUsuario.ToList();
 
-            var tipoUsuarioProcedure = _contexto.TipoUsuario.FromSqlRaw("ListaTipoUsuario").ToList();
+            var tipoUsuarioProcedure = _contexto.Departamento.FromSqlRaw("ListaTipoUsuario").ToList();
 
             tipoUsuarioProcedure.ForEach(t =>
             {
-                ItensTipoUsuario.Add(new SelectListItem { Value = t.id.ToString(), Text = t.Tipo });
+                ItensTipoUsuario.Add(new SelectListItem { Value = t.Id.ToString(), Text = t.Tipo });
             });
 
             //var ItensTipoUsuario = new List<SelectListItem>
@@ -141,7 +142,7 @@ namespace Crud_DotNET.Controllers
             //_contexto.TipoUsuario.Add(new TipoUsuario { Tipo = "Administrador" });
             //_contexto.SaveChanges();
 
-            var listaTipoUsuario = new List<TipoUsuario>();
+            var listaTipoUsuario = new List<Departamento>();
 
 
             foreach (var item in listaTipoUsuario)

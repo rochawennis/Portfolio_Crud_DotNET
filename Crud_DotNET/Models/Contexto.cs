@@ -11,7 +11,7 @@ namespace Crud_DotNET.Models
         }
         public DbSet<Usuario> Usuario { get; set; }
 
-        public DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public DbSet<Departamento> Departamento { get; set; }
 
     }
 
