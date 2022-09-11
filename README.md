@@ -6,4 +6,8 @@
 
 <h1 align="center">Cadastro de Funcionário</h1>
 <img src="https://user-images.githubusercontent.com/47645762/189551088-ba545a84-9664-47bc-aec4-f0d094eae674.png" width="100%"></img>
+
+<h1 align="center">Cadastrar Funcionário</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189551141-cac413d0-5f37-4fda-ac2e-1536367b27bd.png" width="100%"></img>
+
 </p>
