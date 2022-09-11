@@ -19,4 +19,20 @@
 <h1 align="center">Deletar Funcionário</h1>
 <img src="https://user-images.githubusercontent.com/47645762/189551296-0edc7924-692e-408c-a171-8da7ad17e5b3.png" width="100%"></img>
 
+
+<h1 align="center">Home - Cadastro de Departamento</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189551088-ba545a84-9664-47bc-aec4-f0d094eae674.png" width="100%"></img>
+
+<h1 align="center">Cadastrar Departamento</h1>
+<img src="" width="100%"></img>
+
+<h1 align="center">Editar Departamento</h1>
+<img src="" width="100%"></img>
+
+<h1 align="center">Detalhes do Departamento</h1>
+<img src="" width="100%"></img>
+
+<h1 align="center">Deletar Departamento</h1>
+<img src="" width="100%"></img>
+
 </p>
