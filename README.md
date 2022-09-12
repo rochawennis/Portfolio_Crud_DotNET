@@ -51,3 +51,12 @@
 <img src="https://user-images.githubusercontent.com/47645762/189551481-64b76c42-71bc-427c-95db-aa6c35acac9d.png" width="100%"></img>
 
 </p>
+
+<p align="center">
+<h1 align="center">BD - Funcionários</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189558120-8ae1d77c-d48f-4381-ab87-44c022fa63ff.png" width="100%"></img>
+
+<h1 align="center">BD - Departamentos</h1>
+<img src="https://user-images.githubusercontent.com/47645762/189558143-9838606b-4c40-4a81-90fc-1786a9adc222.png" width="100%"></img>
+</p>
+
