@@ -6,7 +6,7 @@
 + Visual Studio 2022 versão 17.3.3
 + Entity Framework 6.0.8
 + SQL Server
-+ SQL Server Management Studio
++ SQL Server Management Studio versão 18.12.1
 
 
 <p align="center">
